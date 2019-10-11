@@ -1,2 +1,2 @@
-# Login-postgres
-Exercício de programação com login 
+# CRUD-Postgres
+CRUD usando postgres referente aos exercícios da matéria de Linguagem de Programação II da faculdade.
