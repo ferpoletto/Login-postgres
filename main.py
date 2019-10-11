@@ -1,60 +1,90 @@
-from livro import Livro
+from login import *
+from usuario import *
+from validacoes import *
 
 
 def menu():
-    op = int(input('MENU\n'
-                   '=-=-=-=-=-=-=-=-=-=-=-=-\n'
-                   '1 - CADASTRO\n'
-                   '2 - MOSTRAR TUDO \n'
-                   '3 - ATUALIZAR\n'
-                   '4 - DELETAR \n'
-                   '5 - BUSCAR UM\n'
-                   '6 - SAIR\n'
-                   '=-=-=-=-=-=-=-=-=-=-=-=-\n'
-                   'DIGITE A OPÇÃO DESEJADA: '))
+
+    op = int(input("1 - FAZER LOGIN\n"
+                   "2 - CADASTRAR USUARIO\n"
+                   "3 - INATIVAR USUARIO\n"
+                   "4 - ALTERA USUARIO\n"
+                   "5 - VER DADOS DO USUARIO\n"
+                   "6 - SAIR\n"
+                   "\nDigite a opção desejada: "))
+
     return op
 
-l = Livro()
+user = Usuario()
+valida = Validacao()
 
 while True:
 
     op = menu()
 
     if op == 1:
-        print('CADASTRAR!')
-        autor = input("Digite o autor: ")
-        tipo = input("Digite o tipo: ")
+        print(f'LOGIN')
+        #Input das informações para autenticação
+        usuario = input("Digite o usuário: ")
+        senha = input("Digite a senha: ")
 
-        l.cadastrar(autor, tipo)
+        #Chama método autenticar da classe login para validar login
+        login = Login()
+
+        if login.autenticar(usuario, senha) == 1:
+
+
+
+
+
 
     elif op == 2:
-        print('Mostrar TUDO!')
+        print(f'CADASTRAR USUARIO')
+        #Input de dados
+        nome = input("Digite o nome: ")
+        cpf = input("Digite o CPF: ")
+        email = input("Digite o email: ")
+        #Quando cadastra o usuário fica como ativo sempre
+        flag_ativo = 1
 
-        l.mostrar_tudo()
+
+        #chama o cadastro de usuário
+        resultado = user.cadastrar(nome, cpf, email, flag_ativo)
+        print(resultado)
 
     elif op == 3:
-        print('Editar')
-        editar = input("Digite o ID do autor para editar: ")
-        autor = input("Digite novo nome do autor: ")
-        tipo = input("Digite o novo tipo: ")
+        print(f'INATIVAR USUÁRIO')
+        nome_inativar = input("Digite o nome para inativar: ")
 
-        l.atualizar(editar, autor, tipo)
+        #chama o método inativar
+        resultado = user.inativar(nome_inativar)
+        print(resultado)
 
     elif op == 4:
-        print('Deletar')
-        delete = input("Digite o ID do autor para deletar: ")
+        print("ALTERA USUARIO")
 
-        l.deletar(delete)
 
     elif op == 5:
-        print('Find One')
-        find = int(input("Digite o ID: "))
-        l.find_one(find)
+        print("VER DADOS DO USUARIO")
+        find = input("Digite o nome para visualizar oa dados: ")
+
+        #valida se o nome existe no banco
+        resultado = valida.valida_usuario_existe(find)
+
+        if resultado == 1:
+            user.mostrar(find)
+        else:
+            print("Usuário inexistente!")
+
+
+
+
 
     elif op == 6:
-        print("Finalizando...")
+        print('Finalizando...')
         break
 
     else:
-        print(f'Opção inválida. Tente novamente!')
-print("FIM!")
+        print("Opção inválida. Tente novamente!")
+
+print('FIM!')
