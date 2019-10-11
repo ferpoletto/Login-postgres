@@ -1,12 +1,6 @@
-from validacoes import *
-
-class Login():
-
-    def __init__(self):
-        self.valida = Validacao()
-
-    def autenticar(self, login, senha):
-        return 1
+class Login:
 
 
+    def autenticacao(self, user, password):
+        pass
 
