@@ -33,3 +33,19 @@ class Portal:
         finally:
             self.bd.cursor.close()
             self.bd.connection.close()
+
+    def valida_usuario_existe(self, usuario):
+        try:
+            self.bd = Connection()
+            self.query = "SELECT nome FROM usuario"
+            usuarios_cadastrado = self.bd.executarSQLRetorno(self.query)
+            for i in range(len(usuarios_cadastrado)):
+                if usuario == usuarios_cadastrado[i][0]:
+                    return 1
+            return 0
+
+        except:
+            print('Erro ao autenticar')
+        finally:
+            self.bd.cursor.close()
+            self.bd.connection.close()
