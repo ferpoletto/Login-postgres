@@ -1,55 +1,20 @@
-from login import *
-from validacoes import *
-from usuario import *
-
-
-def portal():
-    print('='*30)
-    print('{:^30}'.format('PÁGINA DE LOGIN'))
-    print('='*30)
-
-
-login = Login()
-garanta = Validacoes()
-usuario = Usuario()
+from portal import *
 
 while True:
-    portal()
-    user = input("Usuário: ")
-    password = input("Senha: ")
+    portal = Portal()
 
-    if garanta.valida_user_existe(user) == 0:
-        print("Usuário não encontrado.")
+    usuario_e_senha = portal.menu_portal()
+
+    if portal.autenticar(usuario_e_senha['Usuario'], usuario_e_senha['Senha']) == 0:
+        print('Login falhou')
     else:
+        print('Login efetuado com sucesso!')
 
-            if login.autenticacao(user, password) == 1:
-                opcao = usuario.menu_usuario()
-                if opcao == 1:
-                    print('=' * 30)
-                    print('{:^30}'.format('CADASTRO DE USUARIO'))
-                    print('=' * 30)
 
-                elif opcao == 2:
-                    print('=' * 30)
-                    print('{:^30}'.format('EXCLUIR USUARIO'))
-                    print('=' * 30)
 
-                elif opcao == 3:
-                    print('=' * 30)
-                    print('{:^30}'.format('ALTERAR USUARIO'))
-                    print('=' * 30)
 
-                elif opcao == 4:
-                    print('=' * 30)
-                    print('{:^30}'.format('MOSTRAR USUARIO'))
-                    print('=' * 30)
 
-                elif opcao == 5:
-                    break
-                else:
-                    print("Opção inválida.")
-        else:
-            print("Senha inválida!")
+
 
 
 

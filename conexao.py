@@ -12,16 +12,20 @@ class Connection():
                 database="login")
             self.connection.autocommit = True
             self.cursor = self.connection.cursor()
-
         except:
             print('Falha na conexão')
 
-
     def executarSQL(self, query):
+        try:
+            self.cursor.execute(query)
+        except:
+            print('Falha ao executarSQL')
+
+    def executarSQLRetorno(self, query):
         try:
             result = self.cursor.execute(query)
             result = self.cursor.fetchall()
             return result
 
         except:
-            return "Falha ao executar query"
+            return ('Falha ao executarSQLRetorno')
