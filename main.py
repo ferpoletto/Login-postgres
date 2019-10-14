@@ -1,4 +1,5 @@
 from portal import *
+from menu import *
 
 while True:
     portal = Portal()
@@ -13,9 +14,18 @@ while True:
 
             if usuario_e_senha['Usuario'] == 'admin':
                 print('Acessando sistema no modo ADM')
+                menu_ADM = Menu()
+                menu_ADM.mostra_menu_ADM()
+
+
 
             else:
                 print('Bem vindo, usuário!')
+                menu_USER = Menu()
+                menu_USER.mostra_menu_USER()
+
+
+
     elif portal.valida_usuario_existe(usuario_e_senha['Usuario']) == 0:
         print('Usuário não encontrado!')
 
