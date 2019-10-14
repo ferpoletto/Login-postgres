@@ -15,9 +15,10 @@ while True:
             if usuario_e_senha['Usuario'] == 'admin':
                 print('Acessando sistema no modo ADM')
                 menu_ADM = Menu()
-                menu_ADM.mostra_menu_ADM()
-
-
+                op = 0
+                while op != 6:
+                    op = menu_ADM.mostra_menu_ADM()
+                    menu_ADM.opcoes_ADM(op)
 
             else:
                 print('Bem vindo, usuário!')

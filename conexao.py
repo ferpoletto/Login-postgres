@@ -12,6 +12,9 @@ class Connection():
                 database="login")
             self.connection.autocommit = True
             self.cursor = self.connection.cursor()
+
+
+
         except:
             print('Falha na conexão')
 

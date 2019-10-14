@@ -1,5 +1,4 @@
 from conexao import *
-from pprint import pprint
 
 class Portal:
     
