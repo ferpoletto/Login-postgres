@@ -1,2 +1,6 @@
 # CRUD-Postgres
-Exercício de programação usando Postgres. Sistema possui um login com modo ADM e modo 'normal', onde o ADM faz o CRUD de novos funcionários e o modo normal é um controle de estoque.
+Exerc de programação para treinar CRUD com postgres.
+
+Sistema de login com modo USUARIO e modo ADM
+
+Modo usuário não está implementado ainda.
