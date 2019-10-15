@@ -13,8 +13,6 @@ class Connection():
             self.connection.autocommit = True
             self.cursor = self.connection.cursor()
 
-
-
         except:
             print('Falha na conexão')
 

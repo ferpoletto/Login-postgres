@@ -21,7 +21,7 @@ class Portal:
     def autenticar(self, usuario, senha):
         try:
             self.bd = Connection()
-            self.query = "SELECT senha FROM usuario WHERE nome = '{0}'".format(usuario)
+            self.query = "SELECT senha FROM usuario WHERE nome = '{0}' and flinativo = 'N'".format(usuario)
             senha_cadastrada = self.bd.executarSQLRetorno(self.query)
             if senha_cadastrada[0][0] == senha:
                 return 1
@@ -36,7 +36,7 @@ class Portal:
     def valida_usuario_existe(self, usuario):
         try:
             self.bd = Connection()
-            self.query = "SELECT nome FROM usuario"
+            self.query = "SELECT nome FROM usuario where flinativo = 'N'"
             usuarios_cadastrado = self.bd.executarSQLRetorno(self.query)
             for i in range(len(usuarios_cadastrado)):
                 if usuario == usuarios_cadastrado[i][0]:

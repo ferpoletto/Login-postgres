@@ -21,7 +21,7 @@ while True:
                     menu_ADM.opcoes_ADM(op)
 
             else:
-                print('Bem vindo, usuário!')
+                print(f"Bem vindo, usuário {usuario_e_senha['Usuario']}!")
                 menu_USER = Menu()
                 menu_USER.mostra_menu_USER()
 

@@ -44,8 +44,9 @@ class Menu:
             novo_nome = input("Digite o novo nome: ")
             nova_senha = input("Digite a nova senha: ")
             novo_email = input("Digite o novo email: ")
+            novo_flinativo = input("Digite o novo status do usuário inativo [S/N]: ")
 
-            adm.alterar_usuario(nome, novo_nome, nova_senha, novo_email)
+            adm.alterar_usuario(nome, novo_nome, nova_senha, novo_email, novo_flinativo)
 
         elif op == 4:
             print('=' * 30)
